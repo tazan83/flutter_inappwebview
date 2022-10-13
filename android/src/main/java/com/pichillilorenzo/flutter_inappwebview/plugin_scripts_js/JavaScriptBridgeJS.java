@@ -4,7 +4,7 @@ import com.pichillilorenzo.flutter_inappwebview.types.PluginScript;
 import com.pichillilorenzo.flutter_inappwebview.types.UserScriptInjectionTime;
 
 public class JavaScriptBridgeJS {
-  public static final String JAVASCRIPT_BRIDGE_NAME = "flutter_inappwebview";
+  public static final String JAVASCRIPT_BRIDGE_NAME = "Native";
   public static final String JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME = "IN_APP_WEBVIEW_JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT";
   public static final PluginScript JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT = new PluginScript(
           JavaScriptBridgeJS.JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT_GROUP_NAME,

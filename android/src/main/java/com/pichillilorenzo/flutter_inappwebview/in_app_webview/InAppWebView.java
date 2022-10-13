@@ -1534,6 +1534,15 @@ final public class InAppWebView extends InputAwareWebView implements InAppWebVie
     channel.invokeMethod("onHideContextMenu", obj);
   }
 
+  public void consoleMessage(Map<String, Object> map) {
+    JSONObject json = new JSONObject(map);
+    
+    Map<String, Object> obj = new HashMap<>();
+    obj.put("message", json.toString());
+    obj.put("messageLevel", 999);
+    channel.invokeMethod("onConsoleMessage", obj);
+  }
+
   public void onScrollStopped() {
     if (floatingContextMenu != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       adjustFloatingContextMenuPosition();

@@ -30,6 +30,27 @@ public class JavaScriptBridgeInterface {
   }
 
   @JavascriptInterface
+  public void onJsResponse(final String type, final String msg) {
+    if (inAppWebView == null) {
+      return;
+    }
+
+    final Map<String, Object> obj = new HashMap<>();
+    obj.put("type", type);
+    obj.put("msg", msg);
+
+    final Handler handler = new Handler(inAppWebView.getWebViewLooper());
+    handler.post(new Runnable() {
+      @Override
+      public void run() {
+        if (inAppWebView != null) {
+          inAppWebView.consoleMessage(obj);
+        }
+      }
+    });
+  }
+
+  @JavascriptInterface
   public void _hideContextMenu() {
     if (inAppWebView == null) {
       return;

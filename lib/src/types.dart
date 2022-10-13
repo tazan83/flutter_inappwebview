@@ -59,7 +59,7 @@ class ConsoleMessageLevel {
         return ConsoleMessageLevel.values
             .firstWhere((element) => element.toValue() == value);
       } catch (e) {
-        return null;
+        return ConsoleMessageLevel._internal(value);
       }
     }
     return null;
