@@ -91,7 +91,12 @@ public class InAppWebViewClient extends WebViewClient {
       } else {
         // There isn't any way to load an URL for a frame that is not the main frame,
         // so if the request is not for the main frame, the navigation is allowed.
-        return request.isForMainFrame();
+        // return request.isForMainFrame();
+        if (request.getUrl().toString().startsWith("intent://")) {
+          return true;
+        } else {
+          return request.isForMainFrame();
+        }
       }
     }
     return false;
