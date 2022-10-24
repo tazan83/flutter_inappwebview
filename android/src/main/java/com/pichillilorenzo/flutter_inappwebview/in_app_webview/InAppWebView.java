@@ -1547,6 +1547,12 @@ final public class InAppWebView extends InputAwareWebView implements InAppWebVie
     if (floatingContextMenu != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       adjustFloatingContextMenuPosition();
     }
+
+    // SWH - checked onScrollStopped >> 
+    Map<String, Object> obj = new HashMap<>();
+    obj.put("message", "onScrollStopped");
+    channel.invokeMethod("onConsoleMessage", obj);
+    // >>
   }
 
   @RequiresApi(api = Build.VERSION_CODES.KITKAT)
