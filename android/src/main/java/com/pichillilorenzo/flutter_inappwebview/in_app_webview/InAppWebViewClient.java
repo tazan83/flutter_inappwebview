@@ -159,6 +159,7 @@ public class InAppWebViewClient extends WebViewClient {
       @Override
       public void error(String errorCode, @Nullable String errorMessage, @Nullable Object errorDetails) {
         Log.e(LOG_TAG, errorCode + ", " + ((errorMessage != null) ? errorMessage : ""));
+        // allowShouldOverrideUrlLoading(webView, url, headers, isForMainFrame);
 
         // SWH - add intent error >>
         if (url.startsWith("intent://")) {
@@ -167,10 +168,12 @@ public class InAppWebViewClient extends WebViewClient {
           obj.put("msg", errorMessage != null ? errorMessage : "");
           obj.put("url", url);
           webView.consoleMessage(obj);
+
+          allowShouldOverrideUrlLoading(webView, url, headers, false);
+        } else {
+          allowShouldOverrideUrlLoading(webView, url, headers, isForMainFrame);
         }
         // <<
-
-        allowShouldOverrideUrlLoading(webView, url, headers, isForMainFrame);
       }
 
       @Override
